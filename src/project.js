@@ -4,18 +4,11 @@ import { useInView } from "react-intersection-observer";
 import {
   Database,
   BarChart,
-  Code2,
-  Terminal,
-  Leaf,
-  ShieldCheck,
   Calendar,
   RefreshCw,
   Wallet,
   Palette,
   GraduationCap,
-  ExternalLink,
-  Github,
-  Layers,
 } from "lucide-react";
 
 const projectsData = [
@@ -30,39 +23,17 @@ const projectsData = [
     category: "HTML/CSS/JS",
     tags: ["HTML", "CSS", "JS"],
   },
-  {
-    name: "HUEPDC Club Website",
-    description:
-      "A modern React-based website for Haramaya University Environmental Club. Features dynamic content and responsive design.",
-    img: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&q=80&w=1000",
-    link: "https://github.com/gemachistesfaye/HUEPDC-Website",
-    liveDemo: "https://huepdc-website12.netlify.app/",
-    icon: <Leaf size={20} />,
-    category: "React",
-    tags: ["React", "Tailwind"],
-  },
-  {
-    name: "GlassLogin UI Experience",
-    description:
-      "A futuristic login interface leveraging glassmorphism principles. Built using advanced CSS backdrop-filters, custom animations and responsive React components.",
-    img: "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?auto=format&fit=crop&q=80&w=1000",
-    link: "https://github.com/gemachistesfaye/Frontend-Showcase/tree/main/CSS02",
-    liveDemo: "https://gemachistesfaye.github.io/Frontend-Showcase/CSS02/",
-    icon: <Code2 size={20} />,
-    category: "HTML/CSS/JS",
-    tags: ["HTML", "CSS"],
-  },
+
   {
     name: "Gmail Clone",
     description:
       "A fully functional Gmail-like web application clone featuring inbox, compose, search, email threading, and labels using React and Firebase for real-time delivery.",
     img: "https://images.unsplash.com/photo-1581091870626-44f5fa3af7b7?auto=format&fit=crop&q=80&w=1000",
     link: "https://github.com/gemachistesfaye/Gmail-Clone",
-    liveDemo:
-      "https://gemachistesfaye.github.io/Gmail-Clone/",
+    liveDemo: "https://gemachistesfaye.github.io/Gmail-Clone/",
     icon: <Database size={20} />,
     category: "React",
-    tags: ["React", "Firebase", "Realtime"],
+    tags: ["React", "Node.js", "redux"],
   },
   {
     name: "E-Commerce Insights Dashboard",
@@ -74,7 +45,7 @@ const projectsData = [
       "https://raw.githubusercontent.com/gemachistesfaye/FUTURE_DS_01/main/Dashboard_Overview_Image.png",
     icon: <BarChart size={20} />,
     category: "Analytics",
-    tags: ["Power BI", "Data Analytics", "BI"],
+    tags: ["HTML", "CSS", "React"],
   },
   {
     name: "Age Calculator",
@@ -109,20 +80,9 @@ const projectsData = [
       "https://gemachistesfaye.github.io/Frontend-Showcase/Summer-Bootcamp-Projects/expense-tracker",
     icon: <Wallet size={20} />,
     category: "Finance",
-    tags: ["Vanilla JS", "Local Storage"],
+    tags: ["JS", "Local Storage", "HTML", "CSS"],
   },
-  {
-    name: "Memory Cards Pro",
-    description:
-      "Interactive flashcard web app with offline storage and deck management.",
-    img: "https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&q=80&w=1000",
-    link: "https://github.com/gemachistesfaye/Frontend-Showcase/tree/main/Summer-Bootcamp-Projects/memory-cards",
-    liveDemo:
-      "https://gemachistesfaye.github.io/Frontend-Showcase/Summer-Bootcamp-Projects/memory-cards/",
-    icon: <Layers size={20} />,
-    category: "HTML/CSS/JS",
-    tags: ["HTML", "CSS", "JS"],
-  },
+
   {
     name: "CSS Practice - Agency",
     description:
@@ -134,28 +94,6 @@ const projectsData = [
     icon: <Palette size={20} />,
     category: "HTML/CSS/JS",
     tags: ["HTML", "CSS", "JS"],
-  },
-  {
-    name: "Smart PWD Generator",
-    description:
-      "Privacy-first, cryptographically secure password generator built with Web Crypto API.",
-    img: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=1000",
-    link: "https://github.com/gemachistesfaye/Smart-PWD",
-    liveDemo: "https://gemachistesfaye.github.io/Smart-PWD/",
-    icon: <ShieldCheck size={20} />,
-    category: "HTML/CSS/JS",
-    tags: ["HTML", "CSS", "JS"],
-  },
-  {
-    name: "Smart Grade Evaluator",
-    description:
-      "Python-based Grade Evaluator app. My first coding project from 2017.",
-    img: "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&q=80&w=1000",
-    link: "https://github.com/urjiiko1/GradeEvaluator",
-    liveDemo: "https://grade-evaluator.onrender.com/",
-    icon: <Terminal size={20} />,
-    category: "Python",
-    tags: ["Python", "Flask"],
   },
 ];
 
