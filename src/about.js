@@ -2,13 +2,9 @@ import React, { useState, useEffect, useRef } from "react";
 import resume from "./assests/resume_gaurav.pdf";
 
 import {
-  User,
   Code2,
-  Rocket,
-  GraduationCap,
   Briefcase,
   Award,
-  Sparkles,
   Layers,
   BrainCircuit,
   CheckCircle2,
@@ -55,10 +51,6 @@ const CountingNumber = ({ label, value, duration = 1200, trigger = false }) => {
 const CVModal = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
-  const cvUrl =
-    "https://drive.google.com/file/d/1lzpGC9a6dJs0dpBdCpnrxz-MbdPwNuK3/preview";
-  const downloadUrl =
-    "https://drive.google.com/file/d/1lzpGC9a6dJs0dpBdCpnrxz-MbdPwNuK3/view";
 
   return (
     <div className="fixed inset-0 z-[120] flex items-center justify-center px-3 sm:px-4">
@@ -243,12 +235,12 @@ const App = () => {
   }, []);
 
   const coreCompetencies = [
-    "Web Application Development (Frontend-focused)",
-    "Database Design & Data Analysis",
-    "UI Development & Component Design",
-    "Information Governance & Data Management",
-    "API Integration & Consumption",
-    "Version Control & Collaborative Development",
+    "Frontend Development (React, Redux, Material-UI)",
+    "Backend Development (Node.js, Express)",
+    "Database Design & Management (MySQL)",
+    "UI/UX Design & Responsive Interfaces",
+    "API Development & Integration",
+    "Version Control & Collaboration (Git)",
   ];
 
   const highlights = [
@@ -364,19 +356,19 @@ const App = () => {
                     Executive Summary
                   </h3>
                   <p className="text-xl leading-relaxed text-slate-600 dark:text-slate-400 font-light">
-                    As an{" "}
+                    As a{" "}
                     <span className="font-bold text-slate-900 dark:text-white border-b-2 border-indigo-500/30">
-                      Information Science Professional
+                      Full Stack Developer
                     </span>{" "}
-                    and Software Developer, I specialize in the intersection of
-                    data integrity and high-performance user interfaces.
+                    with expertise in React, Redux, Material-UI, Node.js,
+                    Express, and MySQL, I specialize in building responsive,
+                    secure, and scalable web applications.
                   </p>
                   <p className="text-xl leading-relaxed text-slate-600 dark:text-slate-400 font-light mt-6">
-                    My approach is rooted in structural logic—transforming
-                    complex datasets into intuitive, accessible digital
-                    experiences. Based in{" "}
+                    My approach combines technical proficiency with user-centric
+                    design to create intuitive digital experiences. Based in{" "}
                     <span className="text-indigo-600 font-medium">
-                      Ethiopia
+                      Indore, Madhya Pradesh
                     </span>
                     , I am dedicated to architecting scalable web
                     infrastructures that bridge the gap between technical
@@ -385,76 +377,76 @@ const App = () => {
                 </div>
 
                 {}
-                </div>
+              </div>
             </div>
-            <div className={`lg:col-span-12 transition-all duration-1000 delay-400 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
+            <div
+              className={`lg:col-span-12 transition-all duration-1000 delay-400 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+            >
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 ">
+                {highlights.map((item, index) => (
+                  <div
+                    key={index}
+                    className="p-6 rounded-2xl bg-white dark:bg-slate-800/40 border border-slate-100 dark:border-slate-800 shadow-sm hover:border-indigo-500/50 hover:shadow-xl hover:shadow-indigo-500/5 transition-all duration-500 group"
+                  >
+                    <div className="mb-4 transform group-hover:-translate-y-1 transition-transform duration-300">
+                      {item.icon}
+                    </div>
+                    <h4 className="font-bold text-slate-900 dark:text-white text-[11px] mb-2 uppercase tracking-widest">
+                      {item.title}
+                    </h4>
+                    <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed font-medium">
+                      {item.desc}
+                    </p>
+                  </div>
+                ))}
+              </div>
 
-            
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 ">
-                  {highlights.map((item, index) => (
+              {}
+              <div className="pt-10  border-slate-200 dark:border-slate-800  ml-20 pl-20">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-20">
+                  {stats.map((stat, i) => (
                     <div
-                      key={index}
-                      className="p-6 rounded-2xl bg-white dark:bg-slate-800/40 border border-slate-100 dark:border-slate-800 shadow-sm hover:border-indigo-500/50 hover:shadow-xl hover:shadow-indigo-500/5 transition-all duration-500 group"
+                      key={i}
+                      className="group flex flex-col gap-2 cursor-default"
+                      onMouseEnter={() => {
+                        const n = [...hoveredStats];
+                        n[i] = true;
+                        setHoveredStats(n);
+                      }}
+                      onMouseLeave={() => {
+                        const n = [...hoveredStats];
+                        n[i] = false;
+                        setHoveredStats(n);
+                      }}
                     >
-                      <div className="mb-4 transform group-hover:-translate-y-1 transition-transform duration-300">
-                        {item.icon}
+                      <div className="flex items-baseline gap-1 ">
+                        <span className="text-5xl font-black text-slate-900 dark:text-white tracking-tighter">
+                          <CountingNumber
+                            label={stat.label}
+                            value={stat.value}
+                            trigger={hoveredStats[i] || inView}
+                          />
+                        </span>
+                        <span className="text-indigo-600 dark:text-indigo-500 font-black text-2xl">
+                          +
+                        </span>
                       </div>
-                      <h4 className="font-bold text-slate-900 dark:text-white text-[11px] mb-2 uppercase tracking-widest">
-                        {item.title}
-                      </h4>
-                      <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed font-medium">
-                        {item.desc}
-                      </p>
+                      <div className="flex items-center gap-3">
+                        <div className="h-1 w-6 bg-indigo-500 rounded-full group-hover:w-12 transition-all duration-500" />
+                        <span className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 group-hover:text-slate-900 dark:group-hover:text-white transition-colors">
+                          {stat.label}
+                        </span>
+                      </div>
                     </div>
                   ))}
-                </div> 
-
-                {}
-                <div className="pt-10  border-slate-200 dark:border-slate-800  ml-20 pl-20">
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-20">
-                    {stats.map((stat, i) => (
-                      <div
-                        key={i}
-                        className="group flex flex-col gap-2 cursor-default"
-                        onMouseEnter={() => {
-                          const n = [...hoveredStats];
-                          n[i] = true;
-                          setHoveredStats(n);
-                        }}
-                        onMouseLeave={() => {
-                          const n = [...hoveredStats];
-                          n[i] = false;
-                          setHoveredStats(n);
-                        }}
-                      >
-                        <div className="flex items-baseline gap-1 ">
-                          <span className="text-5xl font-black text-slate-900 dark:text-white tracking-tighter">
-                            <CountingNumber
-                              label={stat.label}
-                              value={stat.value}
-                              trigger={hoveredStats[i] || inView}
-                            />
-                          </span>
-                          <span className="text-indigo-600 dark:text-indigo-500 font-black text-2xl">
-                            +
-                          </span>
-                        </div>
-                        <div className="flex items-center gap-3">
-                          <div className="h-1 w-6 bg-indigo-500 rounded-full group-hover:w-12 transition-all duration-500" />
-                          <span className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 group-hover:text-slate-900 dark:group-hover:text-white transition-colors">
-                            {stat.label}
-                          </span>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
                 </div>
+              </div>
 
-                {}
-                 <div className="pt-10 relative items-center justify-center flex">
-                  <button
-                    onClick={() => setShowCVOptions(true)}
-                    className="group relative inline-flex items-center gap-4 px-10 py-4 rounded-full
+              {}
+              <div className="pt-10 relative items-center justify-center flex">
+                <button
+                  onClick={() => setShowCVOptions(true)}
+                  className="group relative inline-flex items-center gap-4 px-10 py-4 rounded-full
                bg-white dark:bg-slate-900
                text-slate-900 dark:text-white
                border border-slate-200/70 dark:border-slate-700/70
@@ -463,53 +455,53 @@ const App = () => {
                transition-all duration-500 ease-out
                hover:-translate-y-1
                overflow-hidden"
-                  >
-                    {}
-                    <span
-                      className="absolute inset-0 bg-gradient-to-r from-indigo-500/0 via-indigo-500/10 to-purple-500/0
+                >
+                  {}
+                  <span
+                    className="absolute inset-0 bg-gradient-to-r from-indigo-500/0 via-indigo-500/10 to-purple-500/0
                      opacity-0 group-hover:opacity-100 transition-opacity duration-700"
-                    />
+                  />
 
-                    {}
-                    <span
-                      className="absolute -inset-[1px] rounded-full
+                  {}
+                  <span
+                    className="absolute -inset-[1px] rounded-full
                      bg-gradient-to-r from-indigo-500/0 via-indigo-500/40 to-purple-500/0
                      opacity-0 group-hover:opacity-100
                      blur-sm transition-opacity duration-700"
-                    />
+                  />
 
-                    {}
-                    <FileText
-                      size={17}
-                      className="relative text-indigo-600 dark:text-indigo-400
+                  {}
+                  <FileText
+                    size={17}
+                    className="relative text-indigo-600 dark:text-indigo-400
                  transition-all duration-300
                  group-hover:scale-110 group-hover:-rotate-6"
-                    />
+                  />
 
-                    {}
-                    <span className="relative font-semibold tracking-wide">
-                      View Resume
-                    </span>
+                  {}
+                  <span className="relative font-semibold tracking-wide">
+                    View Resume
+                  </span>
 
-                    {}
-                    <span
-                      className="relative text-indigo-600 dark:text-indigo-400
+                  {}
+                  <span
+                    className="relative text-indigo-600 dark:text-indigo-400
                      transition-all duration-300
                      translate-x-0 group-hover:translate-x-2"
-                    >
-                      →
-                    </span>
+                  >
+                    →
+                  </span>
 
-                    {}
-                    <span
-                      className="absolute top-0 left-[-150%] w-[120%] h-full
+                  {}
+                  <span
+                    className="absolute top-0 left-[-150%] w-[120%] h-full
                      bg-gradient-to-r from-transparent via-white/40 to-transparent
                      skew-x-[-20deg]
                      group-hover:left-[150%]
                      transition-all duration-700"
-                    />
-                  </button>
-                </div>
+                  />
+                </button>
+              </div>
             </div>
           </div>
         </div>

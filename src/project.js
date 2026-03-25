@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useInView } from "react-intersection-observer";
 
 import {
@@ -8,22 +8,10 @@ import {
   RefreshCw,
   Wallet,
   Palette,
-  GraduationCap,
+  
 } from "lucide-react";
 
 const projectsData = [
-  {
-    name: "10 Academy Clone",
-    description:
-      "A high-fidelity clone of the 10 Academy platform, focusing on pixel-perfect UI and educational content structure.",
-    img: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=1000",
-    link: "https://github.com/gauravpatel/10-Academy-Clone",
-    liveDemo: "https://gauravpatel.github.io/10-Academy-Clone/",
-    icon: <GraduationCap size={20} />,
-    category: "HTML/CSS/JS",
-    tags: ["HTML", "CSS", "JS"],
-  },
-
   {
     name: "Gmail Clone",
     description:

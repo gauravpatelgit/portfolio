@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { ChevronDown, Mail, Briefcase, Github, Linkedin } from 'lucide-react';
+import { ChevronDown, Mail, Briefcase, Linkedin } from 'lucide-react';
 
 const App = () => {
   const [inView, setInView] = useState(false);

@@ -3,7 +3,6 @@ import {
   Code2, 
   Sparkles, 
   ArrowUpRight, 
-  BarChart3,
   Palette,
   Settings,
   MousePointer2,

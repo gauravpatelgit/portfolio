@@ -3,23 +3,13 @@ import {
   Mail, 
   Smartphone, 
   MapPin, 
-  Twitter, 
-  Instagram, 
-  Linkedin, 
-  Github, 
-  Send, 
-  CheckCircle,
-  ArrowRight
+  Linkedin
 } from "lucide-react";
 
 const Contact = () => {
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const [formError, setFormError] = useState(null);
   const [isVisible, setIsVisible] = useState(false);
   
   const sectionRef = useRef(null);
-  const formUrl = "https://formspree.io/f/xqalrkrn";
 
  
   useEffect(() => {
@@ -32,36 +22,6 @@ const Contact = () => {
     if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
   }, []);
-
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    setIsSubmitting(true);
-    setFormError(null);
-
-    const formData = new FormData(event.target);
-    const data = {};
-    formData.forEach((value, key) => (data[key] = value));
-
-    try {
-      const response = await fetch(formUrl, {
-        method: "POST",
-        headers: { Accept: "application/json", "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
-
-      if (response.ok) {
-        setIsSubmitted(true);
-        event.target.reset();
-      } else {
-        const result = await response.json();
-        setFormError(result.error || "Something went wrong. Please check your form.");
-        setIsSubmitting(false);
-      }
-    } catch (error) {
-      setFormError("Failed to connect to the server. Please check your network.");
-      setIsSubmitting(false);
-    }
-  };
 
   return (
     <section 

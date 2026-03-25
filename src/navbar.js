@@ -1,51 +1,31 @@
 import React, { useState, useEffect } from "react";
 import { 
-  Sun, Moon, Menu, X, ArrowRight, Award, User, Briefcase, Code, Send, Layers, History, FileText 
+  Sun, Moon, Menu, X, Award, User, Briefcase, Code, Layers 
 } from "lucide-react";
 
 const Navbar = ({ 
   isDarkMode: externalIsDarkMode, 
-  toggleDarkMode: externalToggleDarkMode,
-  setShowCVOptions
+  toggleDarkMode: externalToggleDarkMode
 }) => {
-  const [internalDarkMode, setInternalDarkMode] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-  const [scrollProgress, setScrollProgress] = useState(0);
   const [activeSection, setActiveSection] = useState("home");
-  
-  const isDarkMode = externalIsDarkMode !== undefined ? externalIsDarkMode : internalDarkMode;
 
-const navLinks = [
-  { name: "About", href: "#about", id: "about", icon: <User size={18} /> },
-  { name: "Skills", href: "#skills", id: "skills", icon: <Code size={18} /> },
-  { name: "Services", href: "#services", id: "services", icon: <Layers size={18} /> },
-  { name: "Experience", href: "#experience", id: "experience", icon: <Award size={18} /> }, // changed from History
-  { name: "Projects", href: "#projects", id: "projects", icon: <Briefcase size={18} /> },
-];
-
+  const navLinks = [
+    { name: "About", href: "#about", id: "about", icon: <User size={18} /> },
+    { name: "Skills", href: "#skills", id: "skills", icon: <Code size={18} /> },
+    { name: "Services", href: "#services", id: "services", icon: <Layers size={18} /> },
+    { name: "Experience", href: "#experience", id: "experience", icon: <Award size={18} /> },
+    { name: "Projects", href: "#projects", id: "projects", icon: <Briefcase size={18} /> },
+  ];
 
   const handleToggle = () => {
-    if (externalToggleDarkMode) {
-      externalToggleDarkMode();
-    } else {
-      const newMode = !internalDarkMode;
-      setInternalDarkMode(newMode);
-      if (newMode) {
-        document.documentElement.classList.add('dark');
-      } else {
-        document.documentElement.classList.remove('dark');
-      }
-    }
+    externalToggleDarkMode();
   };
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
   useEffect(() => {
     const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
-      setScrollProgress(totalHeight > 0 ? (currentScrollY / totalHeight) * 100 : 0);
-
       const sectionIds = ["home", "about", "skills", "services", "experience", "projects", "contact"];
       const currentActive = sectionIds.find(id => {
         const element = document.getElementById(id);
@@ -77,23 +57,8 @@ const navLinks = [
     }
   };
 
-  // Helper function to safely call setShowCVOptions
-  const handleCVClick = () => {
-    if (typeof setShowCVOptions === 'function') {
-      setShowCVOptions(true);
-    } else {
-      console.warn("setShowCVOptions prop was not provided to Navbar");
-    }
-  };
-
   return (
     <nav className="fixed w-full top-0 left-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200/50 dark:border-gray-800/50 shadow-sm transition-all duration-300">
-      {/* Scroll Progress Bar */}
-      <div 
-        className="absolute top-0 left-0 h-[3px] bg-indigo-600 transition-all duration-150 z-[60]" 
-        style={{ width: `${scrollProgress}%` }}
-      />
-
       <div className="container mx-auto px-6 lg:px-12">
         <div className="flex items-center justify-between h-16 lg:h-20">
           
@@ -143,16 +108,7 @@ const navLinks = [
                 className="p-2.5 rounded-xl bg-gray-100/50 dark:bg-gray-800/50 text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-all active:scale-90"
                 title="Toggle Theme"
               >
-                {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
-              </button>
-
-              <button
-                onClick={handleCVClick}
-                className="group flex items-center space-x-2 px-5 py-2.5 text-sm font-bold rounded-xl transition-all active:scale-95 bg-gray-900 text-white hover:bg-indigo-600 dark:bg-white dark:text-gray-900 dark:hover:bg-indigo-500 dark:hover:text-white shadow-lg"
-              >
-                <FileText size={18} />
-                <span>CV</span>
-                <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                {externalIsDarkMode ? <Sun size={20} /> : <Moon size={20} />}
               </button>
             </div>
           </div>
@@ -163,7 +119,7 @@ const navLinks = [
               onClick={handleToggle} 
               className="p-2.5 rounded-xl bg-gray-100/50 dark:bg-gray-800/50 text-gray-600 dark:text-gray-300 transition-all"
             >
-              {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
+              {externalIsDarkMode ? <Sun size={20} /> : <Moon size={20} />}
             </button>
             <button
               onClick={toggleMenu}
@@ -200,22 +156,6 @@ const navLinks = [
               <span>{link.name}</span>
             </a>
           ))}
-          
-          <div className="pt-4">
-            <button
-              onClick={() => {
-                handleCVClick();
-                setIsOpen(false);
-              }}
-              className="w-full flex items-center justify-between px-6 py-5 text-lg font-bold rounded-2xl transition-all active:scale-95 bg-gray-900 text-white hover:bg-indigo-600 dark:bg-white dark:text-gray-900 dark:hover:bg-indigo-500 dark:hover:text-white shadow-lg"
-            >
-              <div className="flex items-center space-x-3">
-                <FileText size={22} />
-                <span>Get CV</span>
-              </div>
-              <ArrowRight size={22} />
-            </button>
-          </div>
         </div>
       </div>
     </nav>

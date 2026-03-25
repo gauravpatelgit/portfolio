@@ -15,7 +15,6 @@ import "./App.css";
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(true);
-  const [showCVOptions, setShowCVOptions] = useState(false); 
 
   const toggleDarkMode = () => setIsDarkMode(!isDarkMode);
 
@@ -33,7 +32,6 @@ function App() {
       <Navbar
         isDarkMode={isDarkMode}
         toggleDarkMode={toggleDarkMode}
-        setShowCVOptions={setShowCVOptions}
       />
 
       <Home />
@@ -41,11 +39,7 @@ function App() {
       <Skill />
       <Service />
 
-      {}
-      <Experience
-        showCVOptions={showCVOptions}
-        setShowCVOptions={setShowCVOptions}
-      />
+      <Experience />
 
       <Project />
       <Contact />

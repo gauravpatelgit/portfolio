@@ -4,19 +4,15 @@ import resume from "./assests/resume_gaurav.pdf";
 import {
   Briefcase,
   GraduationCap,
-  Palette,
   X,
   Award,
   CheckCircle2,
   Download,
   Layers,
-  Code2,
   Sparkles,
   ArrowUpRight,
   Globe,
   Zap,
-  Cpu,
-  ShieldCheck,
   FileText,
   Eye,
   ShoppingCart,
@@ -62,29 +58,6 @@ const CountingNumber = ({ label, value, duration = 1200, trigger = false }) => {
   return <span>{displayValue}+</span>;
 };
 
-const CVPreviewSkeleton = () => (
-  <div className="w-full aspect-[1/1.4] bg-white dark:bg-slate-800 rounded-lg shadow-inner p-4 border border-slate-200 dark:border-slate-700 overflow-hidden relative group-hover:scale-[1.02] transition-transform duration-500">
-    <div className="flex items-center gap-2 mb-4">
-      <div className="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-700" />
-      <div className="space-y-1">
-        <div className="w-20 h-2 bg-slate-200 dark:bg-slate-700 rounded" />
-        <div className="w-12 h-1.5 bg-slate-100 dark:bg-slate-700 rounded" />
-      </div>
-    </div>
-    <div className="space-y-2">
-      <div className="w-full h-1.5 bg-slate-100 dark:bg-slate-700 rounded" />
-      <div className="w-full h-1.5 bg-slate-100 dark:bg-slate-700 rounded" />
-      <div className="w-3/4 h-1.5 bg-slate-100 dark:bg-slate-700 rounded" />
-    </div>
-    <div className="mt-6 space-y-3">
-      <div className="w-1/2 h-2 bg-indigo-50 dark:bg-indigo-900/20 rounded" />
-      <div className="w-full h-12 bg-slate-50 dark:bg-slate-900/50 rounded-md border border-dashed border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-300">
-        <FileText size={16} />
-      </div>
-    </div>
-  </div>
-);
-
 const CertificateVisual = ({ cert }) => {
   return (
     <div
@@ -114,29 +87,20 @@ const CertificateVisual = ({ cert }) => {
   );
 };
 
-const Experience = ({ showCVOptions, setShowCVOptions }) => {
+const Experience = () => {
   const [selectedCert, setSelectedCert] = useState(null);
   const [hoveredId, setHoveredId] = useState(null);
-  const [activeScrollId, setActiveScrollId] = useState(null);
+  const [showCVOptions, setShowCVOptions] = useState(false);
   const timelineRef = useRef(null);
   const cardRefs = useRef({});
   const [fullImageOpen, setFullImageOpen] = useState(false);
 
   useEffect(() => {
-    document.body.style.overflow =
-      showCVOptions || selectedCert ? "hidden" : "auto";
-
+    document.body.style.overflow = selectedCert || fullImageOpen || showCVOptions ? "hidden" : "auto";
     return () => {
       document.body.style.overflow = "auto";
     };
-  }, [showCVOptions, selectedCert]);
-
-  {
-  }
-  useEffect(() => {
-    document.body.style.overflow =
-      selectedCert || fullImageOpen ? "hidden" : "auto";
-  }, [selectedCert, fullImageOpen]);
+  }, [selectedCert, fullImageOpen, showCVOptions]);
 
   const experiences = [
     {
@@ -295,12 +259,8 @@ const Experience = ({ showCVOptions, setShowCVOptions }) => {
       threshold: 0.1,
     };
 
-    const handleIntersect = (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          setActiveScrollId(entry.target.getAttribute("data-id"));
-        }
-      });
+    const handleIntersect = () => {
+      // Intersection observer for timeline effect
     };
 
     const observer = new IntersectionObserver(handleIntersect, observerOptions);
@@ -355,12 +315,8 @@ const Experience = ({ showCVOptions, setShowCVOptions }) => {
 
           <div className="relative z-10 space-y-12 md:space-y-0">
             {experiences.map((item, index) => {
-              const isActive =
-                hoveredId === item.id || activeScrollId === item.id;
-              const isOtherActive =
-                (hoveredId || activeScrollId) &&
-                hoveredId !== item.id &&
-                activeScrollId !== item.id;
+              const isActive = hoveredId === item.id;
+              const isOtherActive = hoveredId && hoveredId !== item.id;
 
               return (
                 <div
