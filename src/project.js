@@ -21,7 +21,7 @@ const projectsData = [
     liveDemo: "https://gemachistesfaye.github.io/Gmail-Clone/",
     icon: <Database size={20} />,
     category: "React",
-    tags: ["React", "Node.js", "redux"],
+    tags: ["React", "Node.js", "redux","MYSQL2","CSS","HTML"],
   },
   {
     name: "E-Commerce Insights Dashboard",
@@ -33,7 +33,7 @@ const projectsData = [
       "https://raw.githubusercontent.com/gemachistesfaye/FUTURE_DS_01/main/Dashboard_Overview_Image.png",
     icon: <BarChart size={20} />,
     category: "Analytics",
-    tags: ["HTML", "CSS", "React"],
+    tags: ["HTML", "CSS", "React","MongoDB","Node.js","Redux"],
   },
   {
     name: "Age Calculator",
@@ -44,7 +44,7 @@ const projectsData = [
     liveDemo: "https://gemachistesfaye.github.io/Age-Calculator/",
     icon: <Calendar size={20} />,
     category: "HTML/CSS/JS",
-    tags: ["HTML", "CSS", "JS"],
+    tags: ["HTML", "CSS", "React"],
   },
   {
     name: "Exchange Rate Calculator",
@@ -56,7 +56,7 @@ const projectsData = [
       "https://gemachistesfaye.github.io/Frontend-Showcase/Summer-Bootcamp-Projects/exchange-rate",
     icon: <RefreshCw size={20} />,
     category: "Finance",
-    tags: ["HTML", "CSS", "JS"],
+    tags: ["HTML", "CSS", "React"],
   },
   {
     name: "Expense Tracker",
@@ -68,7 +68,7 @@ const projectsData = [
       "https://gemachistesfaye.github.io/Frontend-Showcase/Summer-Bootcamp-Projects/expense-tracker",
     icon: <Wallet size={20} />,
     category: "Finance",
-    tags: ["JS", "Local Storage", "HTML", "CSS"],
+    tags: ["React","Redux","Node.js", "Local Storage", "HTML", "CSS"],
   },
 
   {
